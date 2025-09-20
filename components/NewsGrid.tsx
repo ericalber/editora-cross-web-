@@ -28,10 +28,6 @@ function formatDate(dateISO: string) {
   });
 }
 
-function getToplineText(item: News) {
-  return item.titulo;
-}
-
 export function NewsGrid({ posts }: NewsGridProps) {
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -52,17 +48,11 @@ export function NewsGrid({ posts }: NewsGridProps) {
             <div className="news-card-media-overlay" aria-hidden="true" />
             <div className="news-card-media-top">
               <span className="news-card-pill">{formatTagLabel(item.tags[0])}</span>
-              <p className="news-card-overlay-text">
-                {getToplineText(item)}
-              </p>
             </div>
           </div>
 
           <div className="flex flex-1 flex-col gap-3 p-6">
-            <time
-              dateTime={item.dataISO}
-              className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary"
-            >
+            <time dateTime={item.dataISO} className="news-card-topline">
               {formatDate(item.dataISO)}
             </time>
             <h3 className="news-card-title text-xl font-semibold text-gray-900 group-hover:text-primary">
