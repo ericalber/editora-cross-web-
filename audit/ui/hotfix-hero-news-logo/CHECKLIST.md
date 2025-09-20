@@ -12,4 +12,4 @@
 - `app/globals.css`
 - `style/logo-fix.css`
 - `public/logo-cross.svg`
-  - seletor `.news-card-media`, `.news-card-pill`, `.news-card-title`, `.news-card-excerpt`, `.news-card-date`, `.news-ticker-*`
+  - seletor `.news-card-media`, `.news-card-pill`, `.news-card-title`, `.news-card-excerpt`, `.news-ticker-*`

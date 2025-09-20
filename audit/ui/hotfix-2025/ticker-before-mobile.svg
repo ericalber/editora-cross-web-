@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <rect width="640" height="360" rx="28" fill="#f8fafc" stroke="#e5e7eb" stroke-width="2" />
+  <text x="50%" y="48%" dominant-baseline="middle" text-anchor="middle" font-family="'Inter','Segoe UI',sans-serif" font-size="28" fill="#334155">
+    TICKER • BEFORE • MOBILE
+  </text>
+  <text x="50%" y="62%" dominant-baseline="middle" text-anchor="middle" font-family="'Inter','Segoe UI',sans-serif" font-size="16" fill="#64748b">
+    Placeholder de captura (não disponível no sandbox)
+  </text>
+</svg>

@@ -12,7 +12,9 @@ interface NewsTickerProps {
   items: NewsTickerItem[];
 }
 
-const ITEM_HEIGHT = 48; // px (equiv. to h-12)
+const ITEM_HEIGHT = 48; // px
+const ITEM_GAP = 12; // px (0.75rem)
+const ITEM_STEP = ITEM_HEIGHT + ITEM_GAP;
 
 export function NewsTicker({ items }: NewsTickerProps) {
   const safeItems = useMemo(() => (items.length ? items : []), [items]);
@@ -39,7 +41,11 @@ export function NewsTicker({ items }: NewsTickerProps) {
   const handleBlurWithin = () => setPaused(false);
 
   return (
-    <aside className="news-ticker" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+    <aside
+      className="news-ticker"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <div className="news-ticker-header">Últimas notícias</div>
       <div
         className="news-ticker-viewport"
@@ -48,7 +54,7 @@ export function NewsTicker({ items }: NewsTickerProps) {
       >
         <div
           className="news-ticker-track"
-          style={{ transform: `translateY(-${index * ITEM_HEIGHT}px)` }}
+          style={{ transform: `translateY(-${index * ITEM_STEP}px)` }}
           aria-live="polite"
         >
           {safeItems.map((item) => (

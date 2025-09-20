@@ -47,24 +47,21 @@ export function NewsGrid({ posts }: NewsGridProps) {
             />
             <div className="news-card-media-overlay" aria-hidden="true" />
             <div className="news-card-media-top">
-              <span className="news-card-pill">
-                {formatTagLabel(item.tags[0])}
-              </span>
+              <span className="news-card-pill">{formatTagLabel(item.tags[0])}</span>
             </div>
           </div>
 
-          <div className="flex flex-1 flex-col gap-3 p-6">
-            <time
-              dateTime={item.dataISO}
-              className="news-card-date"
-            >
-              {formatDate(item.dataISO)}
-            </time>
-            <h3 className="news-card-title text-xl font-semibold text-gray-900 group-hover:text-primary">
+          <div className="flex flex-1 flex-col gap-4 p-6">
+            <div className="news-card-top">
+              <time dateTime={item.dataISO} className="news-card-top-text">
+                {formatDate(item.dataISO)}
+              </time>
+            </div>
+            <h3 className="news-card-title text-left text-xl font-semibold text-gray-900 group-hover:text-primary">
               {item.titulo}
             </h3>
-            <p className="news-card-excerpt text-sm text-gray-600">{item.resumo}</p>
-            <div className="mt-auto pt-2">
+            <p className="news-card-excerpt text-left text-sm text-gray-600">{item.resumo}</p>
+            <div className="mt-auto pt-2 text-left">
               <Link
                 href={`/noticias/${item.slug}`}
                 className="inline-flex items-center text-sm font-semibold text-primary transition hover:text-primary/80"
