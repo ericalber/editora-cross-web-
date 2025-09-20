@@ -76,7 +76,7 @@ export default function NewsDetailPage({ params }: NewsDetailPageProps) {
       name: "Editora Cross",
       logo: {
         "@type": "ImageObject",
-        url: absoluteUrl("/logo-cross.png"),
+        url: absoluteUrl("/logo-cross.svg"),
       },
     },
   };

@@ -8,10 +8,10 @@ export function Footer() {
         <div className="space-y-4">
           <Link href="/" className="inline-flex items-center gap-3">
             <Image
-              src="/logo-cross.png"
+              src="/logo-cross.svg"
               alt="Editora Cross"
               width={140}
-              height={56}
+              height={48}
             />
           </Link>
           <p className="max-w-sm text-sm text-gray-400">

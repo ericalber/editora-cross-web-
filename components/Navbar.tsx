@@ -50,21 +50,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="logo-brand-wrapper" aria-label="Ir para a página inicial">
-          <motion.div whileHover={{ scale: 1.02 }}>
-            <Image
-              src="/logo-cross.png"
-              alt="Editora Cross"
-              width={160}
-              height={64}
-              priority
-              className="logo-brand-image"
-            />
-          </motion.div>
-        </Link>
-        <div className="hidden items-center gap-6 lg:flex">
+    <nav className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+      <div className="relative mx-auto flex h-20 max-w-7xl items-center justify-center px-4 sm:px-6">
+        <div className="hidden items-center gap-6 lg:flex lg:absolute lg:left-6">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -78,6 +66,22 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+        </div>
+
+        <Link href="/" className="logo-brand-wrapper" aria-label="Ir para a página inicial">
+          <motion.div whileHover={{ scale: 1.02 }}>
+            <Image
+              src="/logo-cross.svg"
+              alt="Editora Cross"
+              width={150}
+              height={48}
+              priority
+              className="logo-brand-image"
+            />
+          </motion.div>
+        </Link>
+
+        <div className="hidden items-center gap-4 lg:flex lg:absolute lg:right-6">
           <CartIcon />
           <a
             href={WHATSAPP_CONTACT_URL}
@@ -88,7 +92,8 @@ export default function Navbar() {
             Fale no WhatsApp
           </a>
         </div>
-        <div className="flex items-center gap-3 lg:hidden">
+
+        <div className="absolute right-4 flex items-center gap-3 lg:hidden">
           <CartIcon />
           <button
             type="button"

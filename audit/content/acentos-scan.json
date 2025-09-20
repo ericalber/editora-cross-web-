@@ -1,0 +1,18 @@
+[
+  {
+    "original": "educacao",
+    "replacement": "Educação",
+    "appliedIn": [
+      "components/NewsGrid.tsx",
+      "app/globals.css (.news-card-pill letter-spacing)"
+    ]
+  },
+  {
+    "original": "lancamentos",
+    "replacement": "Lançamentos",
+    "appliedIn": [
+      "components/NewsGrid.tsx",
+      "app/globals.css (.news-card-pill letter-spacing)"
+    ]
+  }
+]

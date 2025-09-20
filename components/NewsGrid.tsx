@@ -6,6 +6,21 @@ interface NewsGridProps {
   posts: News[];
 }
 
+const TAG_LABELS: Record<string, string> = {
+  educacao: "Educação",
+  educação: "Educação",
+  lancamentos: "Lançamentos",
+  lançamentos: "Lançamentos",
+};
+
+function formatTagLabel(tag?: string) {
+  if (!tag) {
+    return "Notícia";
+  }
+  const normalized = tag.toLowerCase();
+  return TAG_LABELS[normalized] ?? tag;
+}
+
 function formatDate(dateISO: string) {
   return new Date(dateISO).toLocaleDateString("pt-BR", {
     day: "2-digit",
@@ -21,7 +36,7 @@ export function NewsGrid({ posts }: NewsGridProps) {
           key={item.slug}
           className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:shadow-lg"
         >
-          <div className="relative h-48 w-full overflow-hidden">
+          <div className="news-card-media">
             <Image
               src={item.capa}
               alt={`Ilustração da notícia ${item.titulo}`}
@@ -30,22 +45,25 @@ export function NewsGrid({ posts }: NewsGridProps) {
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 320px"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
-            <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
-              {item.tags[0] ?? "notícia"}
-            </span>
+            <div className="news-card-media-overlay" aria-hidden="true" />
+            <div className="news-card-media-top">
+              <span className="news-card-pill">
+                {formatTagLabel(item.tags[0])}
+              </span>
+            </div>
           </div>
+
           <div className="flex flex-1 flex-col gap-3 p-6">
             <time
               dateTime={item.dataISO}
-              className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary"
+              className="news-card-date"
             >
               {formatDate(item.dataISO)}
             </time>
-            <h3 className="text-xl font-semibold text-gray-900 group-hover:text-primary">
+            <h3 className="news-card-title text-xl font-semibold text-gray-900 group-hover:text-primary">
               {item.titulo}
             </h3>
-            <p className="text-sm text-gray-600">{item.resumo}</p>
+            <p className="news-card-excerpt text-sm text-gray-600">{item.resumo}</p>
             <div className="mt-auto pt-2">
               <Link
                 href={`/noticias/${item.slug}`}

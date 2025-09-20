@@ -12,6 +12,8 @@ interface NewsTickerProps {
   items: NewsTickerItem[];
 }
 
+const ITEM_HEIGHT = 48; // px (equiv. to h-12)
+
 export function NewsTicker({ items }: NewsTickerProps) {
   const safeItems = useMemo(() => (items.length ? items : []), [items]);
   const [index, setIndex] = useState(0);
@@ -33,27 +35,32 @@ export function NewsTicker({ items }: NewsTickerProps) {
     }
   }, [index, safeItems.length]);
 
+  const handleFocusWithin = () => setPaused(true);
+  const handleBlurWithin = () => setPaused(false);
+
   return (
-    <aside
-      className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <div className="bg-primary px-4 py-3 text-xs font-semibold uppercase tracking-[0.25em] text-white">
-        Últimas notícias
-      </div>
-      <div className="relative h-40">
+    <aside className="news-ticker" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+      <div className="news-ticker-header">Últimas notícias</div>
+      <div
+        className="news-ticker-viewport"
+        onFocusCapture={handleFocusWithin}
+        onBlurCapture={handleBlurWithin}
+      >
         <div
-          className="absolute inset-0 flex flex-col gap-3 px-4 py-4 transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateY(-${index * 3}rem)` }}
+          className="news-ticker-track"
+          style={{ transform: `translateY(-${index * ITEM_HEIGHT}px)` }}
+          aria-live="polite"
         >
           {safeItems.map((item) => (
             <Link
               key={item.slug}
               href={`/noticias/${item.slug}`}
-              className="flex h-12 items-center rounded-lg px-3 text-sm font-medium text-gray-800 transition hover:bg-primary/5 hover:text-primary"
+              className="news-ticker-item"
             >
-              • {item.titulo}
+              <span className="news-ticker-bullet" aria-hidden="true">
+                •
+              </span>
+              <span className="news-ticker-text">{item.titulo}</span>
             </Link>
           ))}
         </div>
