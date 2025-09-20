@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { CartProvider } from "@/src/commerce/CartContext";
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://editoracross.com";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,9 +18,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Editora Cross",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Editora Cross",
+    template: "%s | Editora Cross",
+  },
   description:
-    "Conteúdo bíblico, lançamentos e notícias da Editora Cross para igrejas e líderes.",
+    "Conteúdo bíblico, catálogo de livros e notícias da Editora Cross para igrejas, líderes e comunidades de fé.",
+  openGraph: {
+    siteName: "Editora Cross",
+    type: "website",
+    images: [
+      {
+        url: "/images/og-default.svg",
+        width: 1200,
+        height: 630,
+        alt: "Editora Cross",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
@@ -30,9 +52,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <CartProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

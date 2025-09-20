@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" width="1200" height="1600">
+  <defs>
+    <linearGradient id="grad-guia-estudos-atos" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="hsl(246, 70%, 55%)"/>
+      <stop offset="100%" stop-color="hsl(286, 75%, 35%)"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grad-guia-estudos-atos)" rx="32"/>
+  <g fill="rgba(255,255,255,0.12)">
+    <circle cx="240" cy="400" r="216"/>
+    <circle cx="1020" cy="240" r="144"/>
+    <circle cx="900" cy="1200" r="240"/>
+  </g>
+  <text x="50" y="560" font-family="'Inter','Segoe UI',sans-serif" font-size="56" font-weight="700" fill="#fff" letter-spacing="0.5px">Guia de Estudos em Atos</text>
+  <text x="50" y="638.4" font-family="'Inter','Segoe UI',sans-serif" font-size="24" fill="rgba(255,255,255,0.9)" letter-spacing="0.4px">Planos colaborativos para grupos missionais</text>
+  <text x="50" y="1520" font-family="'Inter','Segoe UI',sans-serif" font-size="24" fill="rgba(255,255,255,0.75)" letter-spacing="0.3px">Editora Cross</text>
+</svg>

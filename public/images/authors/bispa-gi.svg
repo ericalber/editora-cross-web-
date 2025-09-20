@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="hsl(250, 70%, 55%)" />
+      <stop offset="100%" stop-color="hsl(300, 75%, 40%)" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" rx="180" fill="url(#grad)" />
+  <g fill="rgba(255,255,255,0.15)">
+    <circle cx="180" cy="200" r="110" />
+    <circle cx="420" cy="160" r="90" />
+    <circle cx="430" cy="430" r="150" />
+  </g>
+  <text x="300" y="330" font-family="'Inter','Segoe UI',sans-serif" font-size="90" font-weight="700" fill="#ffffff" text-anchor="middle">
+    BG
+  </text>
+</svg>

@@ -1,8 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionTitle } from "@/components/SectionTitle";
 import { NewsGrid } from "@/components/NewsGrid";
 import { NewsTicker } from "@/components/NewsTicker";
-import { getNews, getTopNews } from "@/lib/store";
+import { getNews, getTopNews } from "@/lib/news";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Notícias",
+  description:
+    "Acompanhe boletins, eventos e iniciativas missionais da Editora Cross com reportagens exclusivas e análises sobre o mercado editorial cristão.",
+  path: "/noticias",
+});
 
 const PER_PAGE = 6;
 

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "../style/logo-fix.css";
 
 @custom-variant dark (&:is(.dark *));
 

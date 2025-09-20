@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="grad-devocional-familias-lancamento" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="hsl(118, 70%, 55%)"/>
+      <stop offset="100%" stop-color="hsl(158, 75%, 35%)"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grad-devocional-familias-lancamento)" rx="32"/>
+  <g fill="rgba(255,255,255,0.12)">
+    <circle cx="256" cy="180" r="129.6"/>
+    <circle cx="1088" cy="108" r="86.39999999999999"/>
+    <circle cx="960" cy="540" r="144"/>
+  </g>
+  <text x="50" y="251.99999999999997" font-family="'Inter','Segoe UI',sans-serif" font-size="42" font-weight="700" fill="#fff" letter-spacing="0.5px">Devocional Famílias em Oração ganha versão ampliada</text>
+  <text x="50" y="310.79999999999995" font-family="'Inter','Segoe UI',sans-serif" font-size="24" fill="rgba(255,255,255,0.9)" letter-spacing="0.4px">Atualizações da Editora Cross</text>
+  <text x="50" y="640" font-family="'Inter','Segoe UI',sans-serif" font-size="24" fill="rgba(255,255,255,0.75)" letter-spacing="0.3px">editoracross.com</text>
+</svg>

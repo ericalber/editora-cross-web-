@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="grad-equipe-academica" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="hsl(230, 70%, 55%)"/>
+      <stop offset="100%" stop-color="hsl(270, 75%, 35%)"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grad-equipe-academica)" rx="40"/>
+  <g fill="rgba(255,255,255,0.12)">
+    <circle cx="120" cy="150" r="108"/>
+    <circle cx="510" cy="90" r="72"/>
+    <circle cx="450" cy="450" r="120"/>
+  </g>
+  <text x="50" y="210" font-family="'Inter','Segoe UI',sans-serif" font-size="42" font-weight="700" fill="#fff" letter-spacing="0.5px">Equipe Acadêmica Cross</text>
+  <text x="50" y="268.8" font-family="'Inter','Segoe UI',sans-serif" font-size="24" fill="rgba(255,255,255,0.9)" letter-spacing="0.4px">O grupo mantém um clube mensal de traduções, onde testam diferentes versões de passagens bíblicas antes de publicá-las.</text>
+  
+</svg>

@@ -1,6 +1,5 @@
 import { products } from "@/data/products";
 import { authors } from "@/data/authors";
-import { news } from "@/data/news";
 
 export const getProducts = () => products;
 
@@ -15,21 +14,21 @@ export const getBestSellers = (n = 8) =>
 export const getProductBySlug = (slug: string) =>
   products.find((product) => product.slug === slug);
 
-export const getProductsByAuthor = (autorSlug: string) =>
-  products.filter((product) => product.autorSlug === autorSlug);
+export const getProductsByAuthor = (authorSlug: string) => {
+  const author = authors.find((item) => item.slug === authorSlug);
+  if (!author) {
+    return [];
+  }
+  return products.filter((product) => product.autorId === author.id);
+};
 
 export const getAuthors = () => authors;
 
 export const getAuthorBySlug = (slug: string) =>
   authors.find((author) => author.slug === slug);
 
-export const getNews = () =>
-  [...news].sort((a, b) => b.dataISO.localeCompare(a.dataISO));
-
-export const getTopNews = (n = 10) => getNews().slice(0, n);
-
-export const getNewsBySlug = (slug: string) =>
-  news.find((item) => item.slug === slug);
+export const getAuthorById = (id: string) =>
+  authors.find((author) => author.id === id);
 
 export function whatsappLink(titulo: string) {
   const msg = `Quero o livro ${titulo}`;
@@ -39,8 +38,6 @@ export function whatsappLink(titulo: string) {
 export const getProductSlugs = () => products.map((product) => product.slug);
 
 export const getAuthorSlugs = () => authors.map((author) => author.slug);
-
-export const getNewsSlugs = () => news.map((item) => item.slug);
 
 export const getProductCategories = () =>
   Array.from(new Set(products.map((product) => product.categoria)));

@@ -59,10 +59,11 @@ export function AuthorCarousel({ autores }: AuthorCarouselProps) {
             <span className="relative block h-20 w-20 overflow-hidden rounded-full ring-2 ring-primary/20">
               <Image
                 src={autor.avatar}
-                alt={autor.nome}
+                alt={`Retrato do autor ${autor.nome}`}
                 fill
                 sizes="80px"
                 className="object-cover"
+                loading="lazy"
               />
             </span>
             <span className="text-sm font-semibold text-gray-900">{autor.nome}</span>

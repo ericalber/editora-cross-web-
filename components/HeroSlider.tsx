@@ -17,8 +17,7 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    image:
-      "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1400&q=80",
+    image: "/images/hero/slide-1.svg",
     title: "Conteúdo bíblico para uma igreja em movimento",
     subtitle:
       "Conheça recursos para discipulado, formação de líderes e pequenos grupos com linguagem atual e fundamento sólido.",
@@ -27,8 +26,7 @@ const slides: Slide[] = [
   },
   {
     id: 2,
-    image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1400&q=80",
+    image: "/images/hero/slide-2.svg",
     title: "Autores que inspiram transformação",
     subtitle:
       "Histórias, pesquisas e ministérios que abençoam comunidades por todo o Brasil e além.",
@@ -37,13 +35,12 @@ const slides: Slide[] = [
   },
   {
     id: 3,
-    image:
-      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1400&q=80",
+    image: "/images/hero/slide-3.svg",
     title: "Digital, impresso e experiências imersivas",
     subtitle:
       "Lançamentos em múltiplos formatos, com curadoria editorial e suporte para sua igreja.",
     ctaLabel: "Ver lançamentos",
-    ctaHref: "/livros?colecao=lancamentos",
+    ctaHref: "/livros?filtro=lancamentos",
   },
 ];
 
@@ -80,6 +77,7 @@ export function HeroSlider() {
               fill
               priority={activeIndex === 0}
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, 100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/20" />
           </motion.div>

@@ -4,12 +4,13 @@ import { notFound } from "next/navigation";
 import { SectionTitle } from "@/components/SectionTitle";
 import { ProductCard } from "@/components/ProductCard";
 import {
-  getAuthorBySlug,
+  getAuthorById,
   getProductBySlug,
   getProductSlugs,
   getProducts,
   whatsappLink,
 } from "@/lib/store";
+import { AddToCartButton } from "@/components/AddToCartButton";
 
 interface ProductPageProps {
   params: {
@@ -33,8 +34,8 @@ export default function ProductPage({ params }: ProductPageProps) {
     notFound();
   }
 
-  const author = getAuthorBySlug(product.autorSlug);
-  const gallery = product.imagens.length ? product.imagens : [product.cover];
+  const author = getAuthorById(product.autorId);
+  const gallery = product.galeria.length ? product.galeria : [product.capa];
   const related = getProducts()
     .filter((item) => item.slug !== product.slug && item.categoria === product.categoria)
     .slice(0, 8);
@@ -52,9 +53,11 @@ export default function ProductPage({ params }: ProductPageProps) {
             <div className="relative h-[420px] overflow-hidden rounded-3xl border border-gray-200 bg-white">
               <Image
                 src={gallery[0]}
-                alt={product.titulo}
+                alt={`Capa do livro ${product.titulo}`}
                 fill
                 className="object-cover"
+                priority
+                sizes="(max-width: 1024px) 100vw, 540px"
               />
             </div>
             {gallery.length > 1 ? (
@@ -64,7 +67,14 @@ export default function ProductPage({ params }: ProductPageProps) {
                     key={`${image}-${index}`}
                     className="relative h-24 overflow-hidden rounded-2xl border border-gray-200"
                   >
-                    <Image src={image} alt={product.titulo} fill className="object-cover" />
+                    <Image
+                      src={image}
+                      alt={`Miniatura da capa ${index + 1} do livro ${product.titulo}`}
+                      fill
+                      className="object-cover"
+                      sizes="120px"
+                      loading="lazy"
+                    />
                   </div>
                 ))}
               </div>
@@ -79,6 +89,7 @@ export default function ProductPage({ params }: ProductPageProps) {
               <h1 className="text-3xl font-semibold text-gray-900">
                 {product.titulo}
               </h1>
+              <p className="text-base text-gray-600">{product.subtitulo}</p>
               {author ? (
                 <Link
                   href={`/autores/${author.slug}`}
@@ -131,21 +142,26 @@ export default function ProductPage({ params }: ProductPageProps) {
             ) : null}
 
             <div className="flex flex-col gap-3 sm:flex-row">
+              <AddToCartButton
+                bookSlug={product.slug}
+                redirectToCart
+                className="flex-1"
+              />
               <a
                 href={whatsappLink(product.titulo)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary flex-1 text-center text-sm font-semibold uppercase tracking-wide"
+                className="flex-1 rounded-full border border-primary px-6 py-3 text-center text-sm font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10"
               >
                 Comprar via WhatsApp
               </a>
-              <Link
-                href="/contato"
-                className="flex-1 rounded-full border border-primary px-6 py-3 text-center text-sm font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10"
-              >
-                Falar com consultor
-              </Link>
             </div>
+            <Link
+              href="/contato"
+              className="inline-flex items-center justify-center rounded-full border border-primary px-6 py-3 text-center text-sm font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/10"
+            >
+              Falar com consultor
+            </Link>
           </div>
         </div>
 

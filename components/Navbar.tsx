@@ -6,6 +6,8 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { CartIcon } from "./CartIcon";
+import { WHATSAPP_CONTACT_URL } from "@/lib/constants";
 
 const links = [
   { href: "/", label: "Início" },
@@ -14,9 +16,6 @@ const links = [
   { href: "/autores", label: "Autores" },
   { href: "/contato", label: "Contato" },
 ];
-
-const WHATSAPP_CONTACT =
-  "https://wa.me/5511999999999?text=Ol%C3%A1%21%20Gostaria%20de%20falar%20com%20a%20Editora%20Cross.";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -53,18 +52,19 @@ export default function Navbar() {
   return (
     <nav className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center gap-3">
-          <motion.div whileHover={{ scale: 1.05 }}>
+        <Link href="/" className="logo-brand-wrapper" aria-label="Ir para a página inicial">
+          <motion.div whileHover={{ scale: 1.02 }}>
             <Image
               src="/logo-cross.png"
               alt="Editora Cross"
-              width={150}
-              height={60}
+              width={160}
+              height={64}
               priority
+              className="logo-brand-image"
             />
           </motion.div>
         </Link>
-        <div className="hidden items-center gap-10 lg:flex">
+        <div className="hidden items-center gap-6 lg:flex">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -78,8 +78,9 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <CartIcon />
           <a
-            href={WHATSAPP_CONTACT}
+            href={WHATSAPP_CONTACT_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"
@@ -87,15 +88,18 @@ export default function Navbar() {
             Fale no WhatsApp
           </a>
         </div>
-        <button
-          type="button"
-          aria-label="Abrir menu"
-          aria-expanded={open}
-          onClick={handleToggle}
-          className="inline-flex items-center justify-center rounded-full border border-primary/30 p-2 text-primary transition hover:bg-primary/10 lg:hidden"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-3 lg:hidden">
+          <CartIcon />
+          <button
+            type="button"
+            aria-label="Abrir menu"
+            aria-expanded={open}
+            onClick={handleToggle}
+            className="inline-flex items-center justify-center rounded-full border border-primary/30 p-2 text-primary transition hover:bg-primary/10"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
       <AnimatePresence>
         {open ? (
@@ -122,7 +126,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <a
-                href={WHATSAPP_CONTACT}
+                href={WHATSAPP_CONTACT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary w-full"

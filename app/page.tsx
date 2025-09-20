@@ -1,16 +1,20 @@
+import type { Metadata } from "next";
 import { HeroSlider } from "@/components/HeroSlider";
 import { SectionTitle } from "@/components/SectionTitle";
 import { NewsGrid } from "@/components/NewsGrid";
 import { NewsTicker } from "@/components/NewsTicker";
 import { ProductsCarousel } from "@/components/ProductsCarousel";
 import { AuthorCarousel } from "@/components/AuthorCarousel";
-import {
-  getAuthors,
-  getBestSellers,
-  getNewReleases,
-  getNews,
-  getTopNews,
-} from "@/lib/store";
+import { getAuthorBySlug, getBestSellers, getNewReleases } from "@/lib/store";
+import { getNews, getTopNews } from "@/lib/news";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Início",
+  description:
+    "Portal da Editora Cross com notícias, lançamentos editoriais, catálogo de livros e experiências digitais para igrejas e comunidades cristãs.",
+  path: "/",
+});
 
 export default function Home() {
   const news = getNews().slice(0, 6);
@@ -20,7 +24,21 @@ export default function Home() {
   }));
   const releases = getNewReleases();
   const bestSellers = getBestSellers();
-  const autores = getAuthors();
+  const featuredAuthorSlugs = [
+    "eric-alberto",
+    "walter-bastos",
+    "jamiel-lopes",
+    "josue-brandao",
+    "denilson-lima",
+    "bispa-gi",
+    "elias-soares",
+    "cezar-cavalcantes",
+  ];
+  const autores = featuredAuthorSlugs
+    .map((slug) => getAuthorBySlug(slug))
+    .filter(
+      (author): author is NonNullable<ReturnType<typeof getAuthorBySlug>> => Boolean(author),
+    );
 
   return (
     <main className="bg-gray-50 pb-16 pt-28">

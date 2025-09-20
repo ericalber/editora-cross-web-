@@ -1,0 +1,5 @@
+{
+  "status": "EXECUCAO_SIMULADA",
+  "reason": "Dependências locais ausentes impedem execução do Lighthouse neste ambiente de avaliação.",
+  "route": "/noticias"
+}

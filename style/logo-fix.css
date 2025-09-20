@@ -1,0 +1,27 @@
+.logo-brand-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 0.5rem;
+}
+
+.logo-brand-image {
+  width: clamp(7.5rem, 18vw, 9.5rem);
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+@media (min-width: 1024px) {
+  .logo-brand-image {
+    width: clamp(8.5rem, 12vw, 10.5rem);
+  }
+}
+
+.logo-brand-wrapper:focus-visible,
+.logo-brand-wrapper:hover {
+  outline: none;
+}
+
+.logo-brand-wrapper:hover .logo-brand-image {
+  transform: scale(1.04);
+}

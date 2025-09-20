@@ -24,9 +24,11 @@ export function NewsGrid({ posts }: NewsGridProps) {
           <div className="relative h-48 w-full overflow-hidden">
             <Image
               src={item.capa}
-              alt={item.titulo}
+              alt={`Ilustração da notícia ${item.titulo}`}
               fill
               className="object-cover transition duration-700 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 320px"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
             <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
