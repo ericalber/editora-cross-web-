@@ -3,11 +3,13 @@
 - [x] Topo só com pill
 - [x] Zero pseudo-elementos/textos fantasma
 - [x] Sem título duplicado no corpo
-- [x] Base intacta (data/título/resumo/CTA)
+- [x] Corpo intacto (data/título/resumo/CTA)
+- [x] Mobile OK
 
 ## Seletores / Componentes
 - `components/NewsGrid.tsx`
-- `app/globals.css` (`.news-card-media-top`, `.news-card-pill`)
+- `app/globals.css` (`.card-top-area`, `.pill-category`)
+- `src/ui/ui.flags.ts`
 
 ## Observações
-- Capturas (placeholders) armazenadas em `/audit/ui/cards-top-clean/`.
+- Capturas placeholders em `/audit/ui/cards-top-clean/before|after/`.

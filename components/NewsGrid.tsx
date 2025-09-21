@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { News } from "@/data/news";
+import { UI_FLAGS } from "@/src/ui/ui.flags";
 
 interface NewsGridProps {
   posts: News[];
@@ -36,22 +37,22 @@ export function NewsGrid({ posts }: NewsGridProps) {
           key={item.slug}
           className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:shadow-lg"
         >
-          <div className="news-card-media">
-            <Image
-              src={item.capa}
-              alt={`Ilustração da notícia ${item.titulo}`}
-              fill
-              className="object-cover transition duration-700 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 320px"
-              loading="lazy"
-            />
-            <div className="news-card-media-overlay" aria-hidden="true" />
-            {item.tags[0] ? (
-              <div className="news-card-media-top">
-                <span className="news-card-pill">{formatTagLabel(item.tags[0])}</span>
-              </div>
-            ) : null}
-          </div>
+            <div className="news-card-media">
+              <Image
+                src={item.capa}
+                alt={`Ilustração da notícia ${item.titulo}`}
+                fill
+                className="object-cover transition duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 320px"
+                loading="lazy"
+              />
+              <div className="news-card-media-overlay" aria-hidden="true" />
+              {UI_FLAGS.newsCardTopOnlyPill && item.tags[0] ? (
+                <div className="card-top-area">
+                  <span className="pill-category">{formatTagLabel(item.tags[0])}</span>
+                </div>
+              ) : null}
+            </div>
 
           <div className="flex flex-1 flex-col gap-3 p-6">
             <time
