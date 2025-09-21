@@ -17,7 +17,7 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    image: "/images/hero/slide-1.svg",
+    image: "/images/hero/slide-1-clean.svg",
     title: "Conteúdo bíblico para uma igreja em movimento",
     subtitle:
       "Conheça recursos para discipulado, formação de líderes e pequenos grupos com linguagem atual e fundamento sólido.",

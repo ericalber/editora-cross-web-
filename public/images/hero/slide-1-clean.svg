@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="heroSlideOne" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2D1B46" />
+      <stop offset="100%" stop-color="#A96C2F" />
+    </linearGradient>
+    <radialGradient id="heroSlideOneGlow" cx="0.5" cy="0.5" r="0.9">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.35)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#heroSlideOne)" />
+  <rect width="1600" height="900" fill="url(#heroSlideOneGlow)" opacity="0.18" />
+  <g fill="rgba(255,255,255,0.18)" transform="translate(-120,-80)">
+    <circle cx="220" cy="220" r="220" />
+    <circle cx="1160" cy="190" r="210" />
+    <circle cx="940" cy="640" r="280" />
+  </g>
+  <g fill="rgba(255,255,255,0.08)">
+    <path d="M0 660 C240 560 400 760 720 640 C1040 520 1100 720 1340 660 C1580 600 1600 720 1600 720 L1600 900 L0 900 Z" />
+  </g>
+</svg>
