@@ -164,8 +164,6 @@
   }
 
   .news-card-pill {
-    align-self: flex-start;
-    pointer-events: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -194,18 +192,8 @@
     overflow: hidden;
   }
 
-  .news-card-topline {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 0;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--secondary);
-    line-height: 1.4;
-    word-break: normal;
-    hyphens: auto;
+  .hero-badge {
+    margin-inline: auto;
   }
 
   .news-ticker {

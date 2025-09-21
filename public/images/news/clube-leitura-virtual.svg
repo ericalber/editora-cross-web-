@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
   <defs>
-    <linearGradient id="grad-clube-leitura-virtual" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="hsl(104, 70%, 55%)"/>
-      <stop offset="100%" stop-color="hsl(144, 75%, 35%)"/>
+    <linearGradient id="grad-clube-leitura-virtual" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="hsl(226, 68%, 54%)" />
+      <stop offset="100%" stop-color="hsl(274, 74%, 42%)" />
     </linearGradient>
+    <radialGradient id="glow-clube-leitura-virtual" cx="0.6" cy="0.4" r="0.8">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.28)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+    </radialGradient>
   </defs>
-  <rect width="100%" height="100%" fill="url(#grad-clube-leitura-virtual)" rx="32"/>
-  <g fill="rgba(255,255,255,0.12)">
-    <circle cx="256" cy="180" r="129.6"/>
-    <circle cx="1088" cy="108" r="86.39999999999999"/>
-    <circle cx="960" cy="540" r="144"/>
+  <rect width="1280" height="720" fill="url(#grad-clube-leitura-virtual)" rx="32" />
+  <rect width="1280" height="720" fill="url(#glow-clube-leitura-virtual)" rx="32" opacity="0.45" />
+  <g fill="rgba(255,255,255,0.16)">
+    <circle cx="286" cy="246" r="206" />
+    <circle cx="986" cy="226" r="166" />
+    <circle cx="886" cy="606" r="226" />
   </g>
-  <text x="50" y="251.99999999999997" font-family="'Inter','Segoe UI',sans-serif" font-size="42" font-weight="700" fill="#fff" letter-spacing="0.5px">Clube de leitura virtual abre novas vagas</text>
-  <text x="50" y="310.79999999999995" font-family="'Inter','Segoe UI',sans-serif" font-size="24" fill="rgba(255,255,255,0.9)" letter-spacing="0.4px">Atualizações da Editora Cross</text>
-  <text x="50" y="640" font-family="'Inter','Segoe UI',sans-serif" font-size="24" fill="rgba(255,255,255,0.75)" letter-spacing="0.3px">editoracross.com</text>
 </svg>

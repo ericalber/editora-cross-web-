@@ -90,7 +90,7 @@ export function HeroSlider() {
             transition={transition}
             className="max-w-2xl space-y-6"
           >
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-sm font-medium uppercase tracking-[0.2em] text-[#B37A22]">
+            <span className="hero-badge inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-sm font-medium uppercase tracking-[0.2em] text-[#B37A22]">
               Editora Cross
             </span>
             <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
