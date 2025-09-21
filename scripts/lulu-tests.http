@@ -1,0 +1,98 @@
+### 1) Shipping options
+a POST http://localhost:3000/api/lulu/shipping-options
+Content-Type: application/json
+
+{
+  "line_items": [
+    {
+      "pod_package_id": "0600X0900BWSTDLX060UW444GXX",
+      "page_count": 120,
+      "quantity": 1
+    }
+  ],
+  "shipping_address": {
+    "name": "Fulano de Tal",
+    "street1": "123 Main St",
+    "city": "Orlando",
+    "state_code": "FL",
+    "country": "US",
+    "postcode": "32801"
+  }
+}
+
+### 2) Print job cost
+a POST http://localhost:3000/api/lulu/print-job-cost
+Content-Type: application/json
+
+{
+  "line_items": [
+    {
+      "pod_package_id": "0600X0900BWSTDLX060UW444GXX",
+      "page_count": 120,
+      "quantity": 1
+    }
+  ],
+  "shipping_address": {
+    "name": "Fulano de Tal",
+    "street1": "123 Main St",
+    "city": "Orlando",
+    "state_code": "FL",
+    "country": "US",
+    "postcode": "32801",
+    "phone_number": "+1-407-555-1234"
+  },
+  "shipping_option": "GROUND"
+}
+
+### 3) Create print job
+a POST http://localhost:3000/api/lulu/print-jobs
+Content-Type: application/json
+
+{
+  "contact_email": "cliente@example.com",
+  "shipping_level": "GROUND",
+  "shipping_address": {
+    "name": "Fulano de Tal",
+    "street1": "123 Main St",
+    "city": "Orlando",
+    "state_code": "FL",
+    "country": "US",
+    "postcode": "32801",
+    "phone_number": "+1-407-555-1234",
+    "email": "cliente@example.com"
+  },
+  "line_items": [
+    {
+      "title": "Manual do Professor",
+      "quantity": 1,
+      "printable_normalization": {
+        "pod_package_id": "0600X0900BWSTDLX060UW444GXX",
+        "interior": {
+          "source_url": "https://storage.googleapis.com/luluexamples/interior.pdf"
+        },
+        "cover": {
+          "source_url": "https://storage.googleapis.com/luluexamples/cover.pdf"
+        }
+      }
+    }
+  ]
+}
+
+### 4) Consult status
+GET http://localhost:3000/api/lulu/print-jobs/{{job_id}}/status
+
+### 5) Consult costs
+GET http://localhost:3000/api/lulu/print-jobs/{{job_id}}/costs
+
+### 6) Simulate webhook (replace signature)
+POST http://localhost:3000/api/lulu/webhooks
+Content-Type: application/json
+Lulu-HMAC-SHA256: {{signature_hex}}
+
+{
+  "job_id": "123456",
+  "name": "PRINT_JOB_STATUS_CHANGED",
+  "changed": "2025-02-20T12:00:00Z",
+  "message": "Job moved to PRODUCTION_READY",
+  "line_item_statuses": []
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "autor-joao-pereira",
+    "slug": "joao-pereira",
+    "nome": "João Pereira",
+    "miniBio": "Pastor e pesquisador em teologia bíblica, João Pereira atua há mais de quinze anos em iniciativas de discipulado urbano. Lidera redes de pequenos grupos em capitais brasileiras, orientando líderes a conectar Escrituras com desafios sociais concretos. Coordena o laboratório Cidade Esperança, que mapeia experiências de fé em periferias e compartilha metodologias para igrejas que trabalham com juventudes vulneráveis. Também é mentor de líderes bivocacionados e consultor de projetos que unem ação social e formação espiritual, sempre com olhar para sustentabilidade comunitária.",
+    "curiosidade": "João coleciona mapas antigos de cidades brasileiras e usa as histórias por trás deles para criar metáforas em suas pregações.",
+    "avatar": "/images/authors/joao-pereira.svg"
+  },
+  {
+    "id": "autor-ana-paula-souza",
+    "slug": "ana-paula-souza",
+    "nome": "Ana Paula Souza",
+    "miniBio": "Autora de devocionais e facilitadora de retiros, Ana Paula Souza lidera uma rede de mentoras que acompanha famílias e ministérios femininos no Brasil e em comunidades da diáspora lusófona. Com formação em psicologia pastoral, desenvolve materiais que integram cuidado emocional e práticas devocionais semanais. Coordena cafés de oração em igrejas locais e oferece trilhas online para líderes que desejam fortalecer a espiritualidade em casa. Seu trabalho enfatiza escuta ativa, inclusão geracional e criatividade litúrgica para ambientes domésticos.",
+    "curiosidade": "Ela mantém um diário de orações escrito à mão desde os 14 anos e transforma trechos selecionados em cartas para leitoras do clube de leitura.",
+    "avatar": "/images/authors/ana-paula-souza.svg"
+  },
+  {
+    "id": "autor-marcos-lima",
+    "slug": "marcos-lima",
+    "nome": "Marcos Lima",
+    "miniBio": "Professor de história da igreja e conferencista itinerante, Marcos Lima dedica-se a formar líderes em fundamentos da fé reformada. Leciona em seminários regionais, coordena grupos de pesquisa sobre liturgia e acompanha igrejas em processos de revitalização. Seu enfoque une erudição acessível, cuidado pastoral e sensibilidade a contextos multiculturais. Também assessora equipes de plantação que desejam comunicar doutrinas clássicas em linguagem contemporânea e hospeda um podcast sobre espiritualidade reformada em cidades grandes.",
+    "curiosidade": "Marcos restaura fontes tipográficas históricas no tempo livre e já produziu artes de capas para projetos editoriais da Cross.",
+    "avatar": "/images/authors/marcos-lima.svg"
+  },
+  {
+    "id": "autor-claudia-pires",
+    "slug": "claudia-pires",
+    "nome": "Cláudia Pires",
+    "miniBio": "Educadora cristã e designer de experiências de aprendizagem, Cláudia Pires atua na formação de professores de escolas bíblicas e projetos sociais. Ela desenvolve metodologias para aulas híbridas, com materiais de alto contraste e atividades sensoriais, garantindo inclusão de crianças com diferentes perfis cognitivos. Coordena residências pedagógicas em igrejas e treina voluntários para construir planos de aula que conectam Bíblia, arte e serviço comunitário. Também lidera pesquisas sobre alfabetização bíblica em regiões com baixo acesso a recursos educacionais.",
+    "curiosidade": "Cláudia toca sanfona em encontros familiares e frequentemente leva o instrumento para ilustrar aulas sobre criatividade no ensino cristão.",
+    "avatar": "/images/authors/claudia-pires.svg"
+  },
+  {
+    "id": "autor-ricardo-menezes",
+    "slug": "ricardo-menezes",
+    "nome": "Ricardo Menezes",
+    "miniBio": "Mentor de líderes e consultor ministerial, Ricardo Menezes acompanha igrejas em processos de transição, governança e planejamento visionário. Com background em administração e teologia pastoral, ele conduz jornadas de mentoria que unem análise de dados, cuidado emocional e práticas espirituais. Coordena o programa Mentores em Rede da Editora Cross, apoiando equipes que desejam formar novos líderes com responsabilidade e sensibilidade cultural. Também media mesas de diálogo entre ministérios urbanos e iniciativas sociais.",
+    "curiosidade": "Ricardo cultiva um pequeno jardim de ervas aromáticas e distribui mudas em encontros de mentoria como símbolo de cuidado contínuo.",
+    "avatar": "/images/authors/ricardo-menezes.svg"
+  },
+  {
+    "id": "autor-helena-barreto",
+    "slug": "helena-barreto",
+    "nome": "Helena Barreto",
+    "miniBio": "Arqueóloga bíblica e comunicadora digital, Helena Barreto traduz descobertas de campo em conteúdos acessíveis para igrejas e escolas. Participa de expedições no Oriente Médio, registra material audiovisual exclusivo e coordena cursos sobre história bíblica para leigos. Na Editora Cross, lidera projetos que integram realidade aumentada, narrativas arqueológicas e reflexão devocional, aproximando leitores da geografia das Escrituras. Seu ministério valoriza curiosidade intelectual, reverência textual e imaginação pastoral.",
+    "curiosidade": "Helena coleciona pedras de rios onde realiza pesquisas e usa cada uma como ponto de oração por comunidades visitadas.",
+    "avatar": "/images/authors/helena-barreto.svg"
+  },
+  {
+    "id": "autor-equipe-academica",
+    "slug": "equipe-academica",
+    "nome": "Equipe Acadêmica Cross",
+    "miniBio": "A Equipe Acadêmica Cross reúne professores, biblistas e editores com experiência em línguas bíblicas, crítica textual e aplicação pastoral. O time coordena projetos de comentários exegéticos, atlas e materiais de referência que servem igrejas, seminários e instituições missionárias. Cada obra nasce de ciclos de pesquisa, revisão por pares e mentorias com líderes locais, garantindo que conteúdo técnico resulte em formação integral. A equipe também capacita docentes e alunos a utilizar ferramentas acadêmicas em contextos comunitários.",
+    "curiosidade": "O grupo mantém um clube mensal de traduções, onde testam diferentes versões de passagens bíblicas antes de publicá-las.",
+    "avatar": "/images/authors/equipe-academica.svg"
+  },
+  {
+    "id": "autor-equipa-editora",
+    "slug": "equipa-editora",
+    "nome": "Equipe Editora Cross",
+    "miniBio": "Coletivo editorial dedicado a contar histórias de transformação, a Equipe Editora Cross reúne jornalistas, designers e líderes comunitários. O grupo cuida de séries devocionais, relatos missionários e boxes temáticos que documentam fé em ação pelo Brasil. Trabalham em parceria com igrejas locais, registrando narrativas em vídeo, texto e áudio para inspirar discipulado encarnado. Também lideram iniciativas de formação para escritores emergentes, incentivando comunidades a registrar seus testemunhos de forma responsável.",
+    "curiosidade": "A equipe mantém um mural coletivo de gratidão onde leitores enviam cartões escritos à mão relatando histórias de impacto.",
+    "avatar": "/images/authors/equipa-editora.svg"
+  }
+]
