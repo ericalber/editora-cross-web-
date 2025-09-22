@@ -248,5 +248,169 @@
       "familia",
       "bestseller"
     ]
+  },
+  {
+    "id": "livro-mentoria-urbana-jovens",
+    "slug": "mentoria-urbana-jovens",
+    "titulo": "Mentoria Urbana para Jovens Líderes",
+    "subtitulo": "Roteiros digitais para pequenos grupos em movimento",
+    "sinopse": "Eric Alberto compartilha práticas que unem leitura bíblica, tecnologia e serviço comunitário em grandes centros. O livro reúne 12 jornadas modulares com guias de encontro, playlists colaborativas, dinâmicas híbridas e planos de acompanhamento pastoral. Inclui QR Codes para dashboards de métricas relacionais, modelos de check-in emocional e scripts para mentorias rápidas em cafés ou chamadas de vídeo.",
+    "preco": 49.9,
+    "categoria": "Juventude",
+    "autorId": "autor-eric-alberto",
+    "capa": "/images/books/mentoria-urbana-jovens.svg",
+    "galeria": [
+      "/images/books/mentoria-urbana-jovens.svg"
+    ],
+    "isbn": "978-65-900001-13-3",
+    "paginas": 208,
+    "createdAt": "2025-02-10",
+    "tags": [
+      "lancamento"
+    ]
+  },
+  {
+    "id": "livro-editoria-comentarios",
+    "slug": "editoria-comentarios-biblicos",
+    "titulo": "Oficina Editorial de Comentários Bíblicos",
+    "subtitulo": "Processos, curadoria e voz pastoral",
+    "sinopse": "Walter Bastos revela bastidores de traduções, revisões acadêmicas e construção de paratextos para comentários bíblicos contemporâneos. Diagramas mostram fluxos de trabalho com autores, consultores e equipes de design. Há checklists de fidelidade teológica, guias de linguagem inclusiva e modelos de reuniões semanais que garantem alinhamento pastoral e editorial.",
+    "preco": 57,
+    "categoria": "Editorial",
+    "autorId": "autor-walter-bastos",
+    "capa": "/images/books/editoria-comentarios-biblicos.svg",
+    "galeria": [
+      "/images/books/editoria-comentarios-biblicos.svg"
+    ],
+    "isbn": "978-65-900001-14-0",
+    "paginas": 236,
+    "createdAt": "2025-02-12",
+    "tags": [
+      "referencia"
+    ]
+  },
+  {
+    "id": "livro-formacao-integral",
+    "slug": "formacao-integral-periferias",
+    "titulo": "Formação Integral nas Periferias",
+    "subtitulo": "Linguagens, currículos e justiça restaurativa",
+    "sinopse": "Denilson Lima apresenta metodologias para articular teologia bíblica, educação popular e cuidado emocional em contextos periféricos. A obra traz matrizes curriculares adaptáveis, entrevistas com educadoras comunitárias, ferramentas de avaliação participativa e orações guiadas em linguagem inclusiva. Inclui acesso a planilhas de planejamento e roteiros para laboratórios intergeracionais.",
+    "preco": 52.5,
+    "categoria": "Formação",
+    "autorId": "autor-denilson-lima",
+    "capa": "/images/books/formacao-integral-periferias.svg",
+    "galeria": [
+      "/images/books/formacao-integral-periferias.svg"
+    ],
+    "isbn": "978-65-900001-15-7",
+    "paginas": 268,
+    "createdAt": "2025-02-08",
+    "tags": [
+      "educacao"
+    ]
+  },
+  {
+    "id": "livro-mentoria-igrejas",
+    "slug": "mentoria-igrejas-em-transicao",
+    "titulo": "Mentoria para Igrejas em Transição",
+    "subtitulo": "Planos de 90 dias para revitalizar ministérios",
+    "sinopse": "Josué Brandão organiza um percurso em três fases (escuta, discernimento e realinhamento) com encontros semanais, roteiros de oração e indicadores de saúde comunitária. O material inclui inventários de dons, mapas de stakeholders e exercícios para equipes de liderança. Templates editáveis auxiliam a transformar aprendizados em agendas mensais e pactos de acompanhamento.",
+    "preco": 55.4,
+    "categoria": "Liderança",
+    "autorId": "autor-josue-brandao",
+    "capa": "/images/books/mentoria-igrejas-em-transicao.svg",
+    "galeria": [
+      "/images/books/mentoria-igrejas-em-transicao.svg"
+    ],
+    "isbn": "978-65-900001-16-4",
+    "paginas": 224,
+    "createdAt": "2025-02-18",
+    "tags": [
+      "lideranca"
+    ]
+  },
+  {
+    "id": "livro-narrativas-ribeirinhas",
+    "slug": "narrativas-de-fe-ribeirinhas",
+    "titulo": "Narrativas de Fé Ribeirinhas",
+    "subtitulo": "Documentários, podcasts e discipulado itinerante",
+    "sinopse": "Jamiel Lopes compartilha bastidores de produções multimídia que registram histórias de comunidades ribeirinhas. O guia inclui checklists de campo, roteiros de entrevistas, planos de edição e sugestões de integração com igrejas parceiras. Há capítulos sobre ética narrativa, captação de áudio em ambiente remoto e transformação das peças em recursos devocionais e missionais.",
+    "preco": 46.8,
+    "categoria": "Comunicação",
+    "autorId": "autor-jamiel-lopes",
+    "capa": "/images/books/narrativas-de-fe-ribeirinhas.svg",
+    "galeria": [
+      "/images/books/narrativas-de-fe-ribeirinhas.svg"
+    ],
+    "isbn": "978-65-900001-17-1",
+    "paginas": 212,
+    "createdAt": "2025-02-05",
+    "tags": [
+      "midia",
+      "missao"
+    ]
+  },
+  {
+    "id": "livro-liturgia-justica",
+    "slug": "liturgia-e-justica-social",
+    "titulo": "Liturgia e Justiça Social",
+    "subtitulo": "Cânticos, orações e práticas para comunidades inclusivas",
+    "sinopse": "Elias Soares integra pesquisa litúrgica, música sacra e mobilização social. O livro oferece arranjos com cifras, devocionais musicais e propostas de cantos responsivos conectados a temas de justiça. Inclui QR Codes com trilhas originais, aulas em vídeo e exercícios para corais comunitários que desejam cantar esperança em múltiplas linguagens culturais.",
+    "preco": 61.3,
+    "categoria": "Liturgia",
+    "autorId": "autor-elias-soares",
+    "capa": "/images/books/liturgia-e-justica-social.svg",
+    "galeria": [
+      "/images/books/liturgia-e-justica-social.svg"
+    ],
+    "isbn": "978-65-900001-18-8",
+    "paginas": 248,
+    "createdAt": "2025-02-16",
+    "tags": [
+      "musica",
+      "justica"
+    ]
+  },
+  {
+    "id": "livro-espiritualidade-urbana",
+    "slug": "espiritualidade-urbana-pratica",
+    "titulo": "Espiritualidade Urbana na Prática",
+    "subtitulo": "Cadernos de campo para clubes de leitura missionais",
+    "sinopse": "Cézar Cavalcantes reúne experiências de cafés bíblicos, clubes de leitura e jornadas de oração em cidades brasileiras e internacionais. O material apresenta calendários de encontros, perguntas gatilho, mapas de bairro e exercícios que conectam Escrituras a desafios sociais. Acompanha acesso a formulários editáveis e trilhas de podcasts para líderes de hubs urbanos.",
+    "preco": 47.6,
+    "categoria": "Espiritualidade",
+    "autorId": "autor-cezar-cavalcantes",
+    "capa": "/images/books/espiritualidade-urbana-pratica.svg",
+    "galeria": [
+      "/images/books/espiritualidade-urbana-pratica.svg"
+    ],
+    "isbn": "978-65-900001-19-5",
+    "paginas": 218,
+    "createdAt": "2025-02-14",
+    "tags": [
+      "espiritualidade",
+      "urbano"
+    ]
+  },
+  {
+    "id": "livro-cuidado-lideres",
+    "slug": "cuidado-emocional-para-lideres",
+    "titulo": "Cuidado Emocional para Líderes",
+    "subtitulo": "Retiros, acompanhamentos e práticas de restauração",
+    "sinopse": "Bispa Gi compartilha frameworks de retiros, círculos de cuidado e redes de aconselhamento voltadas a mulheres líderes. O livro oferece devocionais temáticos, roteiros para grupos de escuta, exercícios de arte terapia e orientações para montar times de intercessão 24/7. Recursos digitais incluem agenda de oração, mensagens de áudio e kits para encontros híbridos.",
+    "preco": 45.2,
+    "categoria": "Cuidado Pastoral",
+    "autorId": "autor-bispa-gi",
+    "capa": "/images/books/cuidado-emocional-para-lideres.svg",
+    "galeria": [
+      "/images/books/cuidado-emocional-para-lideres.svg"
+    ],
+    "isbn": "978-65-900001-20-1",
+    "paginas": 206,
+    "createdAt": "2025-02-11",
+    "tags": [
+      "lideranca",
+      "cuidado"
+    ]
   }
 ]
