@@ -6,6 +6,12 @@ import { logInfo } from "@/src/lib/logger";
 
 const RATE_LIMIT = { limit: 40, windowMs: 60_000 };
 
+type JsonRecord = Record<string, unknown>;
+
+function isJsonRecord(value: unknown): value is JsonRecord {
+  return typeof value === "object" && value !== null;
+}
+
 export async function POST(request: Request) {
   const rate = rateLimitRequest(request, "lulu-validate-cover", RATE_LIMIT.limit, RATE_LIMIT.windowMs);
   if (!rate.allowed) {
@@ -19,16 +25,18 @@ export async function POST(request: Request) {
   }
 
   const externalId = createExternalId(request.headers.get("x-external-id"));
-  let payload: any;
+  let rawPayload: unknown;
   try {
-    payload = await request.json();
-  } catch (error) {
+    rawPayload = await request.json();
+  } catch {
     return validationError("JSON inválido no corpo da requisição.", externalId);
   }
 
-  if (!payload?.source_url) {
+  if (!isJsonRecord(rawPayload) || typeof rawPayload.source_url !== "string" || rawPayload.source_url.trim().length === 0) {
     return validationError("source_url é obrigatório para validação de capa.", externalId);
   }
+
+  const payload = rawPayload;
 
   try {
     const response = await luluFetch("/validate-cover/", {

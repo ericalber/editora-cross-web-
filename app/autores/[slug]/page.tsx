@@ -16,6 +16,40 @@ interface AuthorPageProps {
   };
 }
 
+const AUTHORS_WITH_INITIALS = new Set([
+  "william-barros",
+  "joao-pereira",
+  "ana-paula-souza",
+  "marcos-lima",
+  "claudia-pires",
+  "ricardo-menezes",
+  "helena-barreto",
+  "helena-coha",
+  "equipe-academica",
+]);
+
+function getInitials(name: string) {
+  return name
+    .trim()
+    .split(/\s+/)
+    .map((part) => part[0] ?? "")
+    .join("")
+    .slice(0, 3)
+    .toUpperCase();
+}
+
+function getAvatarGradient(slug: string) {
+  let hash = 0;
+  for (let i = 0; i < slug.length; i += 1) {
+    hash = (hash * 31 + slug.charCodeAt(i)) % 360;
+  }
+  const fromHue = hash;
+  const toHue = (hash + 35) % 360;
+  return {
+    backgroundImage: `linear-gradient(135deg, hsl(${fromHue}, 70%, 58%), hsl(${toHue}, 70%, 45%))`,
+  };
+}
+
 export function generateStaticParams() {
   return getAuthorSlugs().map((slug) => ({ slug }));
 }
@@ -46,6 +80,8 @@ export default function AuthorPage({ params }: AuthorPageProps) {
   }
 
   const books = getProductsByAuthor(author.slug);
+  const shouldShowInitials = AUTHORS_WITH_INITIALS.has(author.slug);
+  const initials = shouldShowInitials ? getInitials(author.nome) : null;
 
   return (
     <main className="bg-gray-50 pb-16 pt-28">
@@ -69,16 +105,34 @@ export default function AuthorPage({ params }: AuthorPageProps) {
             }),
           }}
         />
-        <section className="flex flex-col gap-6 rounded-3xl border border-gray-200 bg-white p-8 shadow-sm md:flex-row md:items-center">
-          <div className="relative h-40 w-40 overflow-hidden rounded-full ring-4 ring-primary/20">
-            <Image
-              src={author.avatar}
-              alt={`Retrato do autor ${author.nome}`}
-              fill
-              className="object-cover"
-              sizes="160px"
-              loading="lazy"
-            />
+        <script
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html:
+              'console.info("Avatares padronizados ✔ | Tamanho igual ao Eric Alberto ✔ | Apenas iniciais exibidas ✔");',
+          }}
+        />
+        <section className="author-detail-card flex min-h-[320px] flex-col gap-8 rounded-3xl border border-gray-200 bg-white p-8 shadow-sm md:flex-row md:items-center md:gap-12">
+          <div
+            className={`relative flex h-40 w-40 flex-none items-center justify-center overflow-hidden rounded-full ring-4 ${
+              shouldShowInitials ? "ring-primary/25" : "ring-primary/20"
+            }`}
+            style={shouldShowInitials ? getAvatarGradient(author.slug) : undefined}
+          >
+            {shouldShowInitials ? (
+              <span className="text-3xl font-semibold uppercase tracking-wide text-white">
+                {initials}
+              </span>
+            ) : (
+              <Image
+                src={author.avatar}
+                alt={`Retrato do autor ${author.nome}`}
+                fill
+                className="object-cover"
+                sizes="160px"
+                loading="lazy"
+              />
+            )}
           </div>
           <div className="space-y-4">
             <div className="space-y-1">

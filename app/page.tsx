@@ -30,7 +30,7 @@ export default function Home() {
     "jamiel-lopes",
     "josue-brandao",
     "denilson-lima",
-    "bispa-gi",
+    "william-barros",
     "elias-soares",
     "cezar-cavalcantes",
   ];
@@ -39,6 +39,10 @@ export default function Home() {
     .filter(
       (author): author is NonNullable<ReturnType<typeof getAuthorBySlug>> => Boolean(author),
     );
+
+  const worshipVideoUrl =
+    process.env.NEXT_PUBLIC_WORSHIP_VIDEO_URL ??
+    "https://www.youtube.com/embed/?listType=search&list=Julliany%20Souza%20Quem%20%C3%89%20Esse%20Julliany%20Souza";
 
   return (
     <main className="bg-gray-50 pb-16 pt-28">
@@ -75,8 +79,8 @@ export default function Home() {
           <div className="aspect-video w-full overflow-hidden rounded-3xl shadow-xl">
             <iframe
               className="h-full w-full"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="Vídeo"
+              src={worshipVideoUrl}
+              title="Julliany Souza - Quem é Esse?"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />

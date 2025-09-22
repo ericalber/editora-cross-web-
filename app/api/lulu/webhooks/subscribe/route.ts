@@ -6,6 +6,16 @@ import { logInfo } from "@/src/lib/logger";
 
 const RATE_LIMIT = { limit: 10, windowMs: 60_000 };
 
+type JsonRecord = Record<string, unknown>;
+
+function isJsonRecord(value: unknown): value is JsonRecord {
+  return typeof value === "object" && value !== null;
+}
+
+function isNonEmptyString(value: unknown): value is string {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
 export async function POST(request: Request) {
   const rate = rateLimitRequest(request, "lulu-webhook-subscribe", RATE_LIMIT.limit, RATE_LIMIT.windowMs);
   if (!rate.allowed) {
@@ -14,19 +24,24 @@ export async function POST(request: Request) {
 
   const externalId = createExternalId(request.headers.get("x-external-id"));
 
-  let payload: any;
+  let rawPayload: unknown;
   try {
-    payload = await request.json();
-  } catch (error) {
+    rawPayload = await request.json();
+  } catch {
     return validationError("JSON inválido no corpo da requisição.", externalId);
   }
 
-  if (!payload?.url) {
+  if (!isJsonRecord(rawPayload) || !isNonEmptyString(rawPayload.url)) {
     return validationError("Informe a URL de webhook (url).", externalId);
   }
 
+  const payload = rawPayload;
+  const topicsRaw = payload.topics;
+  const topics = Array.isArray(topicsRaw)
+    ? topicsRaw.filter((topic): topic is string => typeof topic === "string" && topic.trim().length > 0)
+    : undefined;
   const body = {
-    topics: payload.topics ?? ["PRINT_JOB_STATUS_CHANGED"],
+    topics: topics && topics.length ? topics : ["PRINT_JOB_STATUS_CHANGED"],
     url: payload.url,
   };
 

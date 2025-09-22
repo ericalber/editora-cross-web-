@@ -37,7 +37,7 @@ export async function getAccessToken(): Promise<string> {
     try {
       const errJson = await response.json();
       detail = errJson.error_description ?? errJson.error ?? detail;
-    } catch (error) {
+    } catch {
       // ignore JSON parse failure
     }
     throw new Error(`Lulu OAuth failed (${response.status}): ${detail}`);

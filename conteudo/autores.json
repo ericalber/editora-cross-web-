@@ -40,12 +40,12 @@
     "avatar": "/images/authors/denilson-lima.svg"
   },
   {
-    "id": "autor-bispa-gi",
-    "slug": "bispa-gi",
-    "nome": "Bispa Gi",
-    "miniBio": "Bispa Gi facilita retiros de restauração emocional e coordena redes de aconselhamento para mulheres líderes em várias regiões do país.",
-    "curiosidade": "Mantém um diário de intercessão ilustrado com aquarelas feitas após cada retiro.",
-    "avatar": "/images/authors/bispa-gi.svg"
+    "id": "autor-william-barros",
+    "slug": "william-barros",
+    "nome": "William Barros",
+    "miniBio": "William Barros lidera laboratórios de criatividade litúrgica e acompanha equipes de adoração que desejam integrar arte, teologia e missão urbana. Atua como produtor musical e mentor pastoral, ajudando igrejas a desenvolver repertórios autorais alinhados a suas comunidades. Na Editora Cross, escreve sobre espiritualidade encarnada e orienta processos editoriais que unem poesia, música e discipulado praticado no cotidiano.",
+    "curiosidade": "Grava trilhas sonoras com sons coletados em mercados e praças da cidade para lembrar as equipes de oração de interceder pelo bairro.",
+    "avatar": "/images/authors/william-barros.svg"
   },
   {
     "id": "autor-elias-soares",
@@ -120,11 +120,11 @@
     "avatar": "/images/authors/equipe-academica.svg"
   },
   {
-    "id": "autor-equipa-editora",
-    "slug": "equipa-editora",
-    "nome": "Equipe Editora Cross",
-    "miniBio": "Coletivo editorial dedicado a contar histórias de transformação, a Equipe Editora Cross reúne jornalistas, designers e líderes comunitários. O grupo cuida de séries devocionais, relatos missionários e boxes temáticos que documentam fé em ação pelo Brasil. Trabalham em parceria com igrejas locais, registrando narrativas em vídeo, texto e áudio para inspirar discipulado encarnado. Também lideram iniciativas de formação para escritores emergentes, incentivando comunidades a registrar seus testemunhos de forma responsável.",
-    "curiosidade": "A equipe mantém um mural coletivo de gratidão onde leitores enviam cartões escritos à mão relatando histórias de impacto.",
-    "avatar": "/images/authors/equipa-editora.svg"
+    "id": "autor-bispa-gi",
+    "slug": "bispa-gi",
+    "nome": "Bispa Gi",
+    "miniBio": "Bispa Gi facilita retiros de restauração emocional e coordena redes de aconselhamento para mulheres líderes em várias regiões do país.",
+    "curiosidade": "Mantém um diário de intercessão ilustrado com aquarelas feitas após cada retiro.",
+    "avatar": "/images/authors/bispa-gi.svg"
   }
 ]

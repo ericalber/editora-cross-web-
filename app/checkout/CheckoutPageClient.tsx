@@ -132,7 +132,7 @@ export function CheckoutPageClient() {
               >
                 {loading ? "Redirecionando..." : "Pagar com Stripe"}
               </button>
-              <PayPalToggle items={items} subtotal={subtotal} disabled={loading} />
+              <PayPalToggle items={items} disabled={loading} />
               <a
                 href={WHATSAPP_CONTACT_URL}
                 target="_blank"

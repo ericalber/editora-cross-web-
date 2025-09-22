@@ -22,7 +22,7 @@ export async function POST(request: Request) {
   let event: StripeCheckoutEvent;
   try {
     event = JSON.parse(payload) as StripeCheckoutEvent;
-  } catch (error) {
+  } catch {
     return NextResponse.json({ message: "Payload inválido." }, { status: 400 });
   }
 
@@ -84,32 +84,42 @@ function buildOrderRecord(session: StripeSession) {
   };
 }
 
-function parseMetadata(metadata?: string | null) {
+type CartItemMetadata = {
+  slug: string;
+  qty: number;
+  unitPrice: number;
+};
+
+function isCartItemMetadata(value: unknown): value is CartItemMetadata {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const candidate = value as Partial<Record<keyof CartItemMetadata, unknown>>;
+  return (
+    typeof candidate.slug === "string" &&
+    typeof candidate.qty === "number" &&
+    Number.isFinite(candidate.qty) &&
+    typeof candidate.unitPrice === "number" &&
+    Number.isFinite(candidate.unitPrice)
+  );
+}
+
+function parseMetadata(metadata?: string | null): CartItemMetadata[] {
   if (!metadata) {
-    return [] as Array<{ slug: string; qty: number; unitPrice: number }>;
+    return [];
   }
   try {
-    const parsed = JSON.parse(metadata);
+    const parsed: unknown = JSON.parse(metadata);
     if (Array.isArray(parsed)) {
       return parsed
-        .map((item) => {
-          if (!item || typeof item !== "object") {
-            return null;
-          }
-          const slug = typeof (item as any).slug === "string" ? (item as any).slug : null;
-          const qty = typeof (item as any).qty === "number" ? (item as any).qty : null;
-          const unitPrice = typeof (item as any).unitPrice === "number" ? (item as any).unitPrice : null;
-          if (!slug || !qty || !unitPrice) {
-            return null;
-          }
-          return { slug, qty, unitPrice };
-        })
-        .filter(Boolean) as Array<{ slug: string; qty: number; unitPrice: number }>;
+        .filter(isCartItemMetadata)
+        .map((item) => ({ slug: item.slug, qty: item.qty, unitPrice: item.unitPrice }));
     }
   } catch (error) {
     console.warn("Não foi possível interpretar metadata do carrinho", error);
   }
-  return [] as Array<{ slug: string; qty: number; unitPrice: number }>;
+  return [];
 }
 
 type StripeSession = {

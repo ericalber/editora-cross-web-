@@ -5,13 +5,12 @@ import type { CartItem } from "@/src/commerce/CartContext";
 
 interface PayPalToggleProps {
   items: CartItem[];
-  subtotal: number;
   disabled?: boolean;
 }
 
 const hasPayPalConfig = Boolean(process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID);
 
-export function PayPalToggle({ items, subtotal, disabled }: PayPalToggleProps) {
+export function PayPalToggle({ items, disabled }: PayPalToggleProps) {
   const [pending, setPending] = useState(false);
 
   if (!hasPayPalConfig || !items.length) {

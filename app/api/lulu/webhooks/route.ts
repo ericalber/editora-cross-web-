@@ -27,9 +27,15 @@ function verifySignature(rawBody: Buffer, signatureHeader: string | null) {
       return false;
     }
     return timingSafeEqual(digest, received);
-  } catch (error) {
+  } catch {
     return false;
   }
+}
+
+type JsonRecord = Record<string, unknown>;
+
+function isJsonRecord(value: unknown): value is JsonRecord {
+  return typeof value === "object" && value !== null;
 }
 
 export async function POST(request: Request) {
@@ -48,10 +54,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "INVALID_SIGNATURE" }, { status: 401 });
   }
 
-  let payload: any = undefined;
+  let payload: unknown;
   try {
     payload = JSON.parse(rawBody.toString("utf-8"));
-  } catch (error) {
+  } catch {
     // continuar com payload bruto
   }
 
@@ -69,12 +75,15 @@ export async function POST(request: Request) {
     logError("Falha ao persistir webhook da Lulu", { external_id: externalId, error: (error as Error).message });
   }
 
-  if (payload?.job_id) {
+  if (isJsonRecord(payload) && payload.job_id !== undefined) {
+    const jobId = payload.job_id;
+    const name = typeof payload.name === "string" ? payload.name : undefined;
+    const message = typeof payload.message === "string" ? payload.message : undefined;
     logInfo("Webhook Lulu recebido", {
       external_id: externalId,
-      job_id: payload.job_id,
-      name: payload.name,
-      message: payload.message,
+      job_id: jobId,
+      name,
+      message,
     });
   }
 

@@ -14,18 +14,39 @@ const ALLOWED_SHIPPING_LEVELS = new Set([
   "EXPRESS",
 ]);
 
-function hasValidLineItem(lineItem: any) {
-  if (!lineItem) return false;
-  if (lineItem.printable_id) {
+type JsonRecord = Record<string, unknown>;
+
+function isJsonRecord(value: unknown): value is JsonRecord {
+  return typeof value === "object" && value !== null;
+}
+
+function isNonEmptyString(value: unknown): value is string {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function hasSourceUrl(value: unknown): value is { source_url: string } {
+  return isJsonRecord(value) && isNonEmptyString(value.source_url);
+}
+
+function hasValidLineItem(lineItem: unknown) {
+  if (!isJsonRecord(lineItem)) {
+    return false;
+  }
+
+  if (isNonEmptyString(lineItem.printable_id)) {
     return true;
   }
+
   const printable = lineItem.printable_normalization;
-  return (
-    printable &&
-    printable.interior?.source_url &&
-    printable.cover?.source_url &&
-    (printable.pod_package_id || lineItem.pod_package_id)
-  );
+  if (!isJsonRecord(printable)) {
+    return false;
+  }
+
+  const hasInterior = hasSourceUrl(printable.interior);
+  const hasCover = hasSourceUrl(printable.cover);
+  const podPackageId = printable.pod_package_id ?? lineItem.pod_package_id;
+
+  return hasInterior && hasCover && isNonEmptyString(podPackageId);
 }
 
 export async function GET(request: Request) {
@@ -75,29 +96,40 @@ export async function POST(request: Request) {
 
   const externalId = createExternalId(request.headers.get("x-external-id"));
 
-  let payload: any;
+  let rawPayload: unknown;
   try {
-    payload = await request.json();
-  } catch (error) {
+    rawPayload = await request.json();
+  } catch {
     return validationError("JSON inválido no corpo da requisição.", externalId);
   }
 
-  if (!payload?.line_items || !Array.isArray(payload.line_items) || payload.line_items.length === 0) {
+  if (!isJsonRecord(rawPayload)) {
+    return validationError("Formato do payload inválido.", externalId);
+  }
+
+  const payload = rawPayload;
+  const lineItems = payload.line_items;
+  if (!Array.isArray(lineItems) || lineItems.length === 0) {
     return validationError("line_items é obrigatório e deve conter ao menos um item.", externalId);
   }
 
-  if (!payload.shipping_address?.phone_number) {
+  const shippingAddress = payload.shipping_address;
+  if (
+    !isJsonRecord(shippingAddress) ||
+    !isNonEmptyString(shippingAddress.phone_number)
+  ) {
     return validationError("shipping_address.phone_number é obrigatório.", externalId);
   }
 
-  if (!payload.shipping_level || !ALLOWED_SHIPPING_LEVELS.has(payload.shipping_level)) {
+  const shippingLevel = payload.shipping_level;
+  if (!isNonEmptyString(shippingLevel) || !ALLOWED_SHIPPING_LEVELS.has(shippingLevel)) {
     return validationError(
       `shipping_level inválido. Utilize um dos valores: ${Array.from(ALLOWED_SHIPPING_LEVELS).join(", ")}.`,
       externalId,
     );
   }
 
-  const hasValidItems = payload.line_items.every(hasValidLineItem);
+  const hasValidItems = lineItems.every(hasValidLineItem);
   if (!hasValidItems) {
     return validationError(
       "Cada item deve possuir printable_id ou printable_normalization com interior/cover e pod_package_id.",
