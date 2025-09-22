@@ -42,7 +42,7 @@ export default function Home() {
 
   const worshipVideoUrl =
     process.env.NEXT_PUBLIC_WORSHIP_VIDEO_URL ??
-    "https://www.youtube.com/embed/?listType=search&list=Julliany%20Souza%20Quem%20%C3%89%20Esse%20Julliany%20Souza";
+    "https://www.youtube.com/embed/?rel=0&listType=search&list=Julliany%20Souza%20Quem%20%C3%89%20Esse";
 
   return (
     <main className="bg-gray-50 pb-16 pt-28">
@@ -82,9 +82,18 @@ export default function Home() {
               src={worshipVideoUrl}
               title="Julliany Souza - Quem é Esse?"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             />
           </div>
+          <p className="text-sm text-gray-500">
+            Se o vídeo não carregar, <a
+              href="https://www.youtube.com/results?search_query=Julliany+Souza+Quem+é+Esse"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-primary underline"
+            >assista diretamente no YouTube</a>.
+          </p>
         </section>
       </div>
     </main>
