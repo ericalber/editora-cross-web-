@@ -8,6 +8,7 @@ import { AuthorCarousel } from "@/components/AuthorCarousel";
 import { getAuthorBySlug, getBestSellers, getNewReleases } from "@/lib/store";
 import { getNews, getTopNews } from "@/lib/news";
 import { buildMetadata } from "@/lib/seo";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = buildMetadata({
   title: "Início",
@@ -45,11 +46,13 @@ export default function Home() {
     "https://www.youtube.com/embed/?rel=0&listType=search&list=Julliany%20Souza%20Quem%20%C3%89%20Esse";
 
   return (
-    <main className="bg-gray-50 pb-16 pt-28">
+    <main className="bg-background pb-16 pt-28">
       <div className="mx-auto flex max-w-6xl flex-col gap-12 px-4 sm:px-6">
-        <HeroSlider />
+        <div className="glass-panel glass-panel--hero">
+          <HeroSlider />
+        </div>
 
-        <section className="space-y-6">
+        <ScrollReveal as="section" className="glass-panel space-y-6">
           <SectionTitle title="Notícias em Destaque" viewAllHref="/noticias" />
           <div className="grid gap-6 md:grid-cols-3">
             <div className="md:col-span-2">
@@ -57,26 +60,26 @@ export default function Home() {
             </div>
             <NewsTicker items={tickerItems} />
           </div>
-        </section>
+        </ScrollReveal>
 
-        <section className="space-y-6">
+        <ScrollReveal as="section" className="glass-panel space-y-6">
           <SectionTitle title="Lançamentos" viewAllHref="/livros?filtro=lancamentos" />
           <ProductsCarousel data={releases} />
-        </section>
+        </ScrollReveal>
 
-        <section className="space-y-6">
+        <ScrollReveal as="section" className="glass-panel space-y-6">
           <SectionTitle title="Mais Vendidos" viewAllHref="/livros?filtro=mais-vendidos" />
           <ProductsCarousel data={bestSellers} />
-        </section>
+        </ScrollReveal>
 
-        <section className="space-y-6">
+        <ScrollReveal as="section" className="glass-panel space-y-6">
           <SectionTitle title="Autores em Destaque" viewAllHref="/autores" />
           <AuthorCarousel autores={autores} />
-        </section>
+        </ScrollReveal>
 
-        <section className="space-y-4">
+        <ScrollReveal as="section" className="glass-panel space-y-4">
           <SectionTitle title="Vídeo" />
-          <div className="aspect-video w-full overflow-hidden rounded-3xl shadow-xl">
+          <div className="glass-card aspect-video w-full overflow-hidden">
             <iframe
               className="h-full w-full"
               src={worshipVideoUrl}
@@ -86,7 +89,7 @@ export default function Home() {
               allowFullScreen
             />
           </div>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             Se o vídeo não carregar, <a
               href="https://www.youtube.com/results?search_query=Julliany+Souza+Quem+é+Esse"
               target="_blank"
@@ -94,7 +97,7 @@ export default function Home() {
               className="font-semibold text-primary underline"
             >assista diretamente no YouTube</a>.
           </p>
-        </section>
+        </ScrollReveal>
       </div>
     </main>
   );

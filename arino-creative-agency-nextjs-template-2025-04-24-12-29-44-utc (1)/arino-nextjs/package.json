@@ -1,0 +1,28 @@
+{
+  "name": "arino-nextjs",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.5",
+    "html-react-parser": "^5.2.3",
+    "lightgallery": "^2.8.3",
+    "next": "15.3.1",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-slick": "^0.30.3",
+    "sass": "^1.87.0",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^11.2.6"
+  },
+  "devDependencies": {
+    "@iconify/react": "^5.2.1",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.1"
+  }
+}

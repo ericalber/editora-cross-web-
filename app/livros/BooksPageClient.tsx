@@ -5,6 +5,9 @@ import { useSearchParams } from "next/navigation";
 import { SectionTitle } from "@/components/SectionTitle";
 import { ProductCard } from "@/components/ProductCard";
 import type { Product } from "@/data/products";
+import { BookQuickView } from "@/components/BookQuickView";
+import { UI_FLAGS } from "@/src/ui/ui.flags";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 interface BooksPageClientProps {
   products: Product[];
@@ -42,11 +45,22 @@ export function BooksPageClient({ products, categories, newReleases, bestSellers
   })();
 
   const [filter, setFilter] = useState(defaultFilter);
+  const [selectedBook, setSelectedBook] = useState<Product | null>(null);
+  const [quickViewOpen, setQuickViewOpen] = useState(false);
+  const enableQuickView = UI_FLAGS.bookQuickView;
 
   const filteredProducts = availableFilters.get(filter) ?? products;
 
+  const handleOpenQuickView = (product: Product) => {
+    if (!enableQuickView) {
+      return;
+    }
+    setSelectedBook(product);
+    setQuickViewOpen(true);
+  };
+
   return (
-    <main className="bg-gray-50 pb-16 pt-28">
+    <main className="bg-background pb-16 pt-28">
       <div className="mx-auto max-w-6xl space-y-10 px-4 sm:px-6">
         <SectionTitle
           title="Catálogo Editora Cross"
@@ -68,12 +82,28 @@ export function BooksPageClient({ products, categories, newReleases, bestSellers
             </button>
           ))}
         </div>
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <ScrollReveal className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {filteredProducts.map((product) => (
-            <ProductCard key={product.slug} product={product} />
+            <ProductCard
+              key={product.slug}
+              product={product}
+              onOpenQuickView={enableQuickView ? handleOpenQuickView : undefined}
+            />
           ))}
-        </div>
+        </ScrollReveal>
       </div>
+      {enableQuickView ? (
+        <BookQuickView
+          product={selectedBook}
+          open={quickViewOpen && Boolean(selectedBook)}
+          onOpenChange={(open) => {
+            setQuickViewOpen(open);
+            if (!open) {
+              setSelectedBook(null);
+            }
+          }}
+        />
+      ) : null}
     </main>
   );
 }

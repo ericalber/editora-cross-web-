@@ -1,10 +1,12 @@
 export const UI_FLAGS = {
   newsCardTopOnlyPill: true,
-  newsCardPolish: false,
-  newsArticleVariants: false,
-  bookQuickView: false,
+  newsCardPolish: true,
+  newsArticleEnhancements: true,
+  bookQuickView: true,
   bookStickyBuyBar: false,
   bookGridFilters: false,
-  microInteractions: false,
+  microInteractions: true,
+  scrollReveal: true,
+  darkModeToggle: true,
   skeletonsAndShimmers: false,
 } as const;

@@ -1,0 +1,221 @@
+/* Premium surface kit */
+:root {
+  --surface-premium-highlight: radial-gradient(140% 140% at 18% -8%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 55%);
+  --surface-premium-background: linear-gradient(150deg, rgba(255, 255, 255, 0.96) 0%, rgba(250, 250, 252, 0.9) 65%, rgba(244, 246, 252, 0.85) 100%);
+  --surface-premium-sheen: linear-gradient(118deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.12) 38%, rgba(255, 255, 255, 0) 60%);
+  --surface-premium-border: var(--surface-glass-border);
+  --surface-premium-shadow-primary: var(--surface-glass-shadow-primary);
+  --surface-premium-shadow-secondary: var(--surface-glass-shadow-secondary);
+}
+
+@layer components {
+  .surface-premium-card {
+    position: relative;
+    background:
+      var(--surface-premium-highlight),
+      var(--surface-premium-background);
+    border: 1px solid var(--surface-premium-border);
+    border-radius: 1.75rem;
+    box-shadow:
+      var(--surface-premium-shadow-primary),
+      var(--surface-premium-shadow-secondary);
+  }
+
+  .surface-premium-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(125% 120% at 20% 10%, rgba(255, 255, 255, 0.74) 0%, rgba(255, 255, 255, 0) 60%);
+  }
+
+  .surface-premium-card::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.58) 0%, rgba(255, 255, 255, 0) 60%);
+  }
+
+  .surface-premium-panel {
+    position: relative;
+    background:
+      var(--surface-premium-highlight),
+      var(--surface-premium-background);
+    border: 1px solid var(--surface-premium-border);
+    border-radius: 1.75rem;
+    box-shadow:
+      var(--surface-premium-shadow-primary),
+      var(--surface-premium-shadow-secondary);
+  }
+
+  .surface-premium-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: var(--surface-premium-sheen);
+  }
+
+  .surface-premium-panel--side {
+    border-radius: 1.5rem 0 0 1.5rem;
+  }
+
+  .news-card--neutral {
+    --surface-premium-highlight: radial-gradient(130% 130% at 18% -6%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 58%);
+    --surface-premium-background: linear-gradient(150deg, rgba(252, 253, 255, 0.96) 0%, rgba(247, 248, 253, 0.9) 70%, rgba(242, 244, 250, 0.85) 100%);
+    --surface-premium-sheen: linear-gradient(120deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0) 60%);
+    --surface-premium-border: rgba(214, 222, 240, 0.55);
+  }
+
+  .news-card--azure {
+    --surface-premium-highlight: radial-gradient(135% 135% at 20% -8%, rgba(134, 176, 255, 0.55) 0%, rgba(134, 176, 255, 0) 60%);
+    --surface-premium-background: linear-gradient(150deg, rgba(232, 240, 255, 0.96) 0%, rgba(219, 231, 255, 0.9) 65%, rgba(206, 224, 255, 0.85) 100%);
+    --surface-premium-sheen: linear-gradient(122deg, rgba(122, 176, 255, 0.38) 0%, rgba(122, 176, 255, 0.08) 52%, rgba(122, 176, 255, 0) 70%);
+    --surface-premium-border: rgba(140, 182, 255, 0.45);
+  }
+
+  .news-card--emerald {
+    --surface-premium-highlight: radial-gradient(135% 135% at 20% -8%, rgba(123, 207, 184, 0.55) 0%, rgba(123, 207, 184, 0) 60%);
+    --surface-premium-background: linear-gradient(150deg, rgba(231, 248, 244, 0.96) 0%, rgba(215, 240, 232, 0.88) 65%, rgba(205, 236, 226, 0.84) 100%);
+    --surface-premium-sheen: linear-gradient(118deg, rgba(123, 207, 184, 0.32) 0%, rgba(123, 207, 184, 0.08) 50%, rgba(123, 207, 184, 0) 70%);
+    --surface-premium-border: rgba(126, 205, 183, 0.45);
+  }
+
+  .news-card--amber {
+    --surface-premium-highlight: radial-gradient(135% 135% at 20% -8%, rgba(247, 200, 114, 0.58) 0%, rgba(247, 200, 114, 0) 60%);
+    --surface-premium-background: linear-gradient(150deg, rgba(255, 247, 233, 0.96) 0%, rgba(253, 238, 217, 0.9) 65%, rgba(251, 233, 205, 0.85) 100%);
+    --surface-premium-sheen: linear-gradient(120deg, rgba(247, 200, 114, 0.32) 0%, rgba(247, 200, 114, 0.1) 50%, rgba(247, 200, 114, 0) 70%);
+    --surface-premium-border: rgba(246, 200, 115, 0.45);
+  }
+
+  .surface-premium-shell {
+    background:
+      var(--surface-premium-highlight),
+      var(--surface-premium-background);
+    border: 1px solid var(--surface-premium-border);
+    box-shadow:
+      var(--surface-premium-shadow-primary),
+      var(--surface-premium-shadow-secondary);
+  }
+
+  .surface-premium-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.82);
+    color: var(--primary);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    box-shadow: 0 14px 28px rgba(32, 24, 64, 0.16);
+  }
+
+  .surface-premium-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+  }
+
+  .surface-premium-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--primary) 45%, transparent);
+    color: var(--primary);
+    background:
+      radial-gradient(130% 120% at 16% 0%, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0) 58%),
+      linear-gradient(175deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.78) 100%);
+    box-shadow:
+      0 14px 28px rgba(34, 23, 52, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+
+  .surface-premium-cta--compact {
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+  }
+
+  .surface-premium-cta:hover,
+  .surface-premium-cta:focus-visible {
+    transform: translateY(-1px);
+    background:
+      radial-gradient(140% 120% at 20% 0%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 60%),
+      linear-gradient(175deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.82) 100%);
+  }
+}
+
+@layer components {
+  .dark .surface-premium-card,
+  .dark .surface-premium-panel {
+    background: linear-gradient(170deg, rgba(33, 21, 40, 0.92) 0%, rgba(33, 21, 40, 0.6) 100%);
+    border: 1px solid rgba(202, 141, 208, 0.24);
+    box-shadow: 0 12px 35px rgba(4, 2, 8, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .dark .surface-premium-panel::after,
+  .dark .surface-premium-card::after {
+    background: linear-gradient(120deg, rgba(202, 141, 208, 0.22) 0%, rgba(202, 141, 208, 0) 55%);
+    opacity: 0.45;
+  }
+
+  .dark .surface-premium-card::before {
+    background: radial-gradient(120% 110% at 18% 8%, rgba(202, 141, 208, 0.32) 0%, rgba(202, 141, 208, 0) 55%);
+  }
+
+  .dark .surface-premium-shell {
+    background: linear-gradient(165deg, rgba(33, 21, 40, 0.92) 0%, rgba(33, 21, 40, 0.75) 100%);
+    border: 1px solid rgba(202, 141, 208, 0.2);
+    box-shadow: 0 12px 32px rgba(4, 2, 8, 0.55);
+  }
+
+  .dark .surface-premium-pill {
+    background: rgba(202, 141, 208, 0.18);
+    color: var(--primary-foreground);
+    box-shadow: 0 14px 28px rgba(4, 2, 8, 0.45);
+  }
+
+  .dark .surface-premium-chip {
+    background: rgba(202, 141, 208, 0.25);
+    color: var(--primary-foreground);
+  }
+
+  .dark .surface-premium-cta {
+    border: 1px solid color-mix(in srgb, var(--primary) 65%, transparent);
+    color: var(--primary-foreground);
+    background: color-mix(in srgb, var(--primary) 24%, transparent);
+    box-shadow: 0 14px 26px rgba(4, 2, 8, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .dark .surface-premium-cta:hover,
+  .dark .surface-premium-cta:focus-visible {
+    background: color-mix(in srgb, var(--primary) 32%, transparent);
+  }
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .surface-premium-panel,
+  .surface-premium-shell {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}

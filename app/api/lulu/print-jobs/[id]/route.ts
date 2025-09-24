@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { luluFetch } from "@/src/lib/lulu/client";
 import { rateLimitRequest } from "@/src/lib/rate-limit";
 import { createExternalId, handleLuluError } from "@/src/lib/api-utils";
@@ -6,9 +6,11 @@ import { logInfo } from "@/src/lib/logger";
 
 const RATE_LIMIT = { limit: 60, windowMs: 60_000 };
 
+type RouteContext = { params: { id: string } };
+
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } },
+  request: NextRequest,
+  { params }: RouteContext,
 ) {
   const rate = rateLimitRequest(request, "lulu-print-jobs-detail", RATE_LIMIT.limit, RATE_LIMIT.windowMs);
   if (!rate.allowed) {

@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { CartIcon } from "./CartIcon";
 import { WHATSAPP_CONTACT_URL } from "@/lib/constants";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 const links = [
   { href: "/", label: "Início" },
@@ -50,7 +51,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+    <nav className="site-navbar surface-premium-shell fixed inset-x-0 top-0 z-50 border-b border-border bg-card/90 backdrop-blur-sm">
       <div className="relative mx-auto flex h-20 max-w-7xl items-center justify-center px-4 sm:px-6">
         <div className="hidden items-center gap-6 lg:flex lg:absolute lg:left-6">
           {links.map((link) => (
@@ -60,7 +61,7 @@ export default function Navbar() {
               className={`text-sm font-semibold transition ${
                 isActive(link.href)
                   ? "text-primary"
-                  : "text-gray-700 hover:text-primary"
+                  : "text-muted-foreground hover:text-primary"
               }`}
             >
               {link.label}
@@ -82,6 +83,7 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-4 lg:flex lg:absolute lg:right-6">
+          <ThemeToggle />
           <CartIcon />
           <a
             href={WHATSAPP_CONTACT_URL}
@@ -94,6 +96,7 @@ export default function Navbar() {
         </div>
 
         <div className="absolute right-4 flex items-center gap-3 lg:hidden">
+          <ThemeToggle />
           <CartIcon />
           <button
             type="button"
@@ -113,7 +116,7 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="border-t border-gray-200 bg-white px-6 pb-6 lg:hidden"
+            className="border-t border-border bg-card px-6 pb-6 lg:hidden"
           >
             <div className="flex flex-col gap-3 pt-4">
               {links.map((link) => (
@@ -124,7 +127,7 @@ export default function Navbar() {
                   className={`rounded-xl px-4 py-3 text-base font-semibold transition ${
                     isActive(link.href)
                       ? "bg-primary/10 text-primary"
-                      : "text-gray-700 hover:bg-gray-100"
+                      : "text-muted-foreground hover:bg-primary/5"
                   }`}
                 >
                   {link.label}

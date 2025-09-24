@@ -4,7 +4,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SectionTitle } from "@/components/SectionTitle";
 import { NewsGrid } from "@/components/NewsGrid";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { getNews, getNewsBySlug, getNewsSlugs } from "@/lib/news";
+import { formatNewsDate } from "@/lib/news-format";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 
 interface NewsDetailPageProps {
@@ -34,14 +36,6 @@ export async function generateMetadata({ params }: NewsDetailPageProps): Promise
   });
 }
 
-function formatDate(dateISO: string) {
-  return new Date(dateISO).toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
-}
-
 export function generateStaticParams() {
   return getNewsSlugs().map((slug) => ({ slug }));
 }
@@ -56,6 +50,7 @@ export default function NewsDetailPage({ params }: NewsDetailPageProps) {
   const related = getNews()
     .filter((item) => item.slug !== article.slug)
     .slice(0, 3);
+  const [nextReading, ...otherRelated] = related;
 
   const description = article.seoDescription ?? article.resumo;
   const jsonLd = {
@@ -81,8 +76,10 @@ export default function NewsDetailPage({ params }: NewsDetailPageProps) {
     },
   };
 
+  const keyPoints = extractKeyPoints(article.resumo, 3);
+
   return (
-    <main className="bg-gray-50 pb-16 pt-28">
+    <main className="bg-background pb-16 pt-28">
       <div className="mx-auto flex max-w-4xl flex-col gap-10 px-4 sm:px-6">
         <script
           type="application/ld+json"
@@ -99,12 +96,12 @@ export default function NewsDetailPage({ params }: NewsDetailPageProps) {
                 <span key={tag}>#{tag}</span>
               ))}
             </div>
-            <h1 className="text-4xl font-semibold text-gray-900">{article.titulo}</h1>
-            <div className="flex flex-wrap gap-3 text-sm text-gray-500">
-              <span>{formatDate(article.dataISO)}</span>
+            <h1 className="text-4xl font-semibold text-foreground">{article.titulo}</h1>
+            <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
+              <span>{formatNewsDate(article.dataISO)}</span>
             </div>
           </div>
-          <div className="relative h-[420px] overflow-hidden rounded-3xl border border-gray-200">
+          <div className="relative h-[420px] overflow-hidden rounded-3xl border border-border">
             <Image
               src={article.capa}
               alt={`Imagem ilustrativa da notícia ${article.titulo}`}
@@ -114,22 +111,52 @@ export default function NewsDetailPage({ params }: NewsDetailPageProps) {
               sizes="(max-width: 768px) 100vw, 768px"
             />
           </div>
-          <div className="space-y-4 text-base leading-relaxed text-gray-700">
+          <div className="space-y-4 text-base leading-relaxed text-foreground/90">
             {article.conteudo ? (
               <div dangerouslySetInnerHTML={{ __html: article.conteudo }} />
             ) : (
               <p>Em breve adicionaremos o conteúdo completo desta notícia.</p>
             )}
           </div>
+
+          {keyPoints.length ? (
+            <ScrollReveal as="section" className="news-article-highlights">
+              <h2>Pontos-chave</h2>
+              <ul>
+                {keyPoints.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </ScrollReveal>
+          ) : null}
+
+          {nextReading ? (
+            <ScrollReveal as="section" className="news-article-next">
+              <h2>Próxima leitura</h2>
+              <Link href={`/noticias/${nextReading.slug}`}>
+                <span>{nextReading.titulo}</span>
+                <span>{formatNewsDate(nextReading.dataISO)}</span>
+              </Link>
+            </ScrollReveal>
+          ) : null}
         </article>
 
-        {related.length ? (
+        {otherRelated.length ? (
           <section className="space-y-6">
             <SectionTitle title="Leia também" viewAllHref="/noticias" />
-            <NewsGrid posts={related} />
+            <NewsGrid posts={otherRelated} />
           </section>
         ) : null}
       </div>
     </main>
   );
+}
+
+function extractKeyPoints(resumo: string, limit: number) {
+  return resumo
+    .split(/[.!?] /)
+    .map((sentence) => sentence.trim())
+    .filter(Boolean)
+    .slice(0, limit)
+    .map((sentence) => (sentence.endsWith(".") ? sentence.slice(0, -1) : sentence));
 }
